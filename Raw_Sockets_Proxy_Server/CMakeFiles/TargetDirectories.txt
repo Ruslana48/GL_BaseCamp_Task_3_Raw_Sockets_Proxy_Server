@@ -1,3 +1,0 @@
-/home/ruslana/Raw_Sockets_Proxy_Server/CMakeFiles/RawSocketsProxyServer.dir
-/home/ruslana/Raw_Sockets_Proxy_Server/CMakeFiles/edit_cache.dir
-/home/ruslana/Raw_Sockets_Proxy_Server/CMakeFiles/rebuild_cache.dir
