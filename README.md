@@ -21,6 +21,7 @@ For Option2: Server must figure out that data has been changed in the middle (ca
 # Run application
 
 `cmake CMakeLists.txt`
+
 `make`
 
 Run (sudo usage is mandatory since raw sockets require root privileges)
