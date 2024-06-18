@@ -20,6 +20,8 @@ For Option2: Server must figure out that data has been changed in the middle (ca
 
 # Run application
 
+// mkdir build && cd build
+
 `cmake CMakeLists.txt`
 
 `make`

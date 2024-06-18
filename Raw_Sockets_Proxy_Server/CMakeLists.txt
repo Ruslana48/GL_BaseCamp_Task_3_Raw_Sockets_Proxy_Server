@@ -11,6 +11,7 @@ endif()
 
 link_libraries(pthread)
 
+include_directories(${PROJECT_SOURCE_DIR})
 include_directories(${PROJECT_SOURCE_DIR}/Client)
 include_directories(${PROJECT_SOURCE_DIR}/Proxy)
 include_directories(${PROJECT_SOURCE_DIR}/Server)

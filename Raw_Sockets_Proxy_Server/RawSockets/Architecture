@@ -1,0 +1,30 @@
+client | rawSocket | server | proxy
+
+////////////
+client
+send(std::string) -> proxy.send()
+
+proxy
+server - RawSocket | listener socket
+read() -> proxy.read()
+modify() -> appendPayload()
+send() -> server.send()
+
+server
+server - RawSocket
+read() -> server.read()
+verifyPacket() -> RawSocket.isValidChecksum()
+
+rawSocket
+send(std::string) -> initializeTCPHeader()
+std::vector<uint_8t> read()
+isValidChecksum() -> should be done by default inside read function. validates TCPHeader
+////////////
+
+
+Client -> Proxy
+
+Proxy -> Server
+
+Client -> Proxy -> Server
+

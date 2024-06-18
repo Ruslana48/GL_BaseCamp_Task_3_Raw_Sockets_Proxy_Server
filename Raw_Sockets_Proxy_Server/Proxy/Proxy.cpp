@@ -1,7 +1,7 @@
-#include "../Proxy/Proxy.h"
+#include "Proxy/Proxy.h"
 
 Proxy::Proxy(const std::string& proxy_ip, int proxy_port, const std::string& server_ip, int server_port) {
-    rawSocket.initializeSocket(sockfd, proxy_addr, proxy_ip, proxy_port);
+    rawSocket.initializeSocket(sockfd, proxy_addr, proxy_ip, proxy_port); // sockfd overwritten
     rawSocket.initializeSocket(sockfd, server_addr, server_ip, server_port);
 }
 
@@ -24,7 +24,7 @@ bool Proxy::chooseModification(bool modify) {
     }
 }
 
-bool Proxy::forwardPacket() {
+bool Proxy::forwardPacket() { // reuse in modifyPayload
     struct iphdr* ip_header = (struct iphdr*)buffer;
     struct tcphdr* tcp_header = (struct tcphdr*)(buffer + ip_header->ihl * 4);
     // change destination
@@ -34,7 +34,7 @@ bool Proxy::forwardPacket() {
     }
 
     tcp_header->dest = server_addr.sin_port;
-    std::string payload(reinterpret_cast<char*>(buffer + sizeof(iphdr)), packetSize - sizeof(iphdr));
+    std::string payload(reinterpret_cast<char*>(buffer + sizeof(iphdr)), packetSize - sizeof(iphdr)); // not needed
 
     if (sendto(sockfd, buffer + sizeof(iphdr), payload.size(), 0, (struct sockaddr*)&server_addr, sizeof(server_addr)) < 0) {
         std::cerr<<"Proxy: failed to forward packet\n";

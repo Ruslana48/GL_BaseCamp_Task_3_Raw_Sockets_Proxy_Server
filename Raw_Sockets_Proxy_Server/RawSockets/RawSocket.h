@@ -4,6 +4,7 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 
+// make it a real class with its own values.
 class RawSocket {
     public:
         void initializeSocket(int& sockfd, struct sockaddr_in& addr, const std::string& ip, int port);

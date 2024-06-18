@@ -26,7 +26,12 @@ void Client::initialize_TCP_header() {
     tcp_header->check = 0;
     tcp_header->urg_ptr = 0;
 }
+// Buffer
+// TCPHeader|Payload
 
+// PseudoHeader|TcpHeader|Payload
+
+// PseudoHeader - erased IPHeader
 void Client::run(std::string message) {
     initialize_TCP_header();
 

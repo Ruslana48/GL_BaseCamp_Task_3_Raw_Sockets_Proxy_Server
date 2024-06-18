@@ -47,7 +47,7 @@ bool Server::processPacket() {
 void Server::run(bool modify) {
     while (true) {
         receivePacket();
-        if (modify) {
+        if (modify) { // not needed
             if (processPacket()) break;
         }
     }
